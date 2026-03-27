@@ -18,12 +18,12 @@ const { eyebrow, title, description, align = "left", inverse = false } = Astro.p
       </p>
     )
   }
-  <h2 class:list={["text-3xl font-semibold tracking-tight md:text-5xl", inverse ? "text-white" : "text-slate-950"]}>
+  <h2 class:list={["text-wrap-balance max-w-4xl text-3xl font-semibold leading-[1.04] tracking-tight md:text-5xl", inverse ? "text-white" : "text-slate-950"]}>
     {title}
   </h2>
   {
     description && (
-      <p class:list={["text-base leading-8 md:text-lg", inverse ? "text-slate-300" : "text-slate-600"]}>
+      <p class:list={["max-w-3xl text-base leading-8 md:text-lg", inverse ? "text-slate-300" : "text-slate-600"]}>
         {description}
       </p>
     )

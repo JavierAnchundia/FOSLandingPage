@@ -1,0 +1,60 @@
+<svg width="760" height="180" viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fos-ring" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#23CDD8" />
+      <stop offset="1" stop-color="#0C4F82" />
+    </linearGradient>
+    <linearGradient id="fos-subtitle" x1="74" y1="102" x2="403" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1EC7D4" />
+      <stop offset="1" stop-color="#58D6DE" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(8 14)">
+    <text x="0" y="76" fill="#0A2F57" font-family="Aptos, 'Segoe UI', Arial, sans-serif" font-size="72" font-weight="700" letter-spacing="-2.5">
+      F
+    </text>
+
+    <g transform="translate(44 18)">
+      <circle cx="28" cy="28" r="27" fill="#0A2F57" />
+      <circle cx="28" cy="28" r="21.5" stroke="url(#fos-ring)" stroke-width="5" />
+      <circle cx="28" cy="8.5" r="4.1" fill="#F2C230" />
+      <circle cx="43.5" cy="14.5" r="4.1" fill="#7BC043" />
+      <circle cx="47" cy="31" r="4.1" fill="#24C8D6" />
+      <circle cx="35.5" cy="44.5" r="4.1" fill="#F2C230" />
+      <circle cx="19.5" cy="45.5" r="4.1" fill="#7BC043" />
+      <circle cx="9" cy="31.5" r="4.1" fill="#24C8D6" />
+      <circle cx="13" cy="15" r="4.1" fill="#F2C230" />
+      <circle cx="28" cy="28" r="5.4" fill="#7BC043" />
+    </g>
+
+    <text x="114" y="76" fill="#0A2F57" font-family="Aptos, 'Segoe UI', Arial, sans-serif" font-size="72" font-weight="700" letter-spacing="-2.5">
+      S
+    </text>
+
+    <text x="176" y="75" fill="#17263B" font-family="Aptos, 'Segoe UI', Arial, sans-serif" font-size="61" font-weight="400" letter-spacing="-1">
+      ECUAD
+    </text>
+
+    <g transform="translate(404 24)">
+      <circle cx="20" cy="20" r="19.2" fill="#0A2F57" />
+      <circle cx="20" cy="20" r="15.3" stroke="url(#fos-ring)" stroke-width="3.7" />
+      <circle cx="20" cy="6.5" r="2.8" fill="#F2C230" />
+      <circle cx="30.8" cy="11" r="2.8" fill="#7BC043" />
+      <circle cx="33.2" cy="22.3" r="2.8" fill="#24C8D6" />
+      <circle cx="25.4" cy="31.4" r="2.8" fill="#F2C230" />
+      <circle cx="14.2" cy="32.2" r="2.8" fill="#7BC043" />
+      <circle cx="6.8" cy="22.6" r="2.8" fill="#24C8D6" />
+      <circle cx="9.2" cy="11.2" r="2.8" fill="#F2C230" />
+      <circle cx="20" cy="20" r="3.7" fill="#7BC043" />
+    </g>
+
+    <text x="448" y="75" fill="#17263B" font-family="Aptos, 'Segoe UI', Arial, sans-serif" font-size="61" font-weight="400" letter-spacing="-1">
+      R S.A.
+    </text>
+
+    <text x="49" y="132" fill="url(#fos-subtitle)" font-family="Aptos, 'Segoe UI', Arial, sans-serif" font-size="45" font-weight="300" letter-spacing="-0.6">
+      fibra optica y sistemas
+    </text>
+  </g>
+</svg>

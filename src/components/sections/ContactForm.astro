@@ -1,16 +1,14 @@
 ---
 import Button from "../ui/Button.astro";
-
-const formProviders = ["Formspree", "Resend", "endpoint serverless"];
 ---
 
 <div class="card-surface relative overflow-hidden rounded-[2rem] border border-white/70 p-8 md:p-10">
   <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-sky-500/70 via-sky-300/35 to-transparent"></div>
   <div class="space-y-4">
-    <p class="text-sm font-semibold uppercase tracking-[0.28em] section-label">Formulario visual</p>
-    <h2 class="text-3xl font-semibold tracking-tight text-slate-950">Cuentanos en que podemos ayudarte</h2>
+    <p class="text-sm font-semibold uppercase tracking-[0.28em] section-label">Contacto</p>
+    <h2 class="text-3xl font-semibold tracking-tight text-slate-950">Cuentanos que necesita tu proyecto</h2>
     <p class="text-sm leading-7 text-slate-600">
-      Este formulario queda listo para integrarse mas adelante con {formProviders.join(", ")}.
+      Comparte el alcance general y te contactaremos para revisar el siguiente paso.
     </p>
   </div>
 
@@ -44,9 +42,9 @@ const formProviders = ["Formspree", "Resend", "endpoint serverless"];
 
     <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <p class="text-xs leading-6 text-slate-500">
-        Integracion futura sugerida: capturar datos desde el frontend y enviarlos a un proveedor de formularios o funcion serverless.
+        Mientras mas contexto nos compartas, mejor podremos orientarte.
       </p>
-      <Button type="submit" variant="dark">Solicitar contacto</Button>
+      <Button type="submit" variant="dark">Enviar mensaje</Button>
     </div>
   </form>
 </div>

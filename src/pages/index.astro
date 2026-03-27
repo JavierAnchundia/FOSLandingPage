@@ -2,52 +2,172 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
 import CapabilitiesStrip from "../components/sections/CapabilitiesStrip.astro";
-import CompanyIntro from "../components/sections/CompanyIntro.astro";
-import ServicesPreview from "../components/sections/ServicesPreview.astro";
-import CTASection from "../components/sections/CTASection.astro";
+import ContactForm from "../components/sections/ContactForm.astro";
 import Container from "../components/ui/Container.astro";
 import SectionTitle from "../components/ui/SectionTitle.astro";
 import ProjectCard from "../components/ui/ProjectCard.astro";
+import ServiceCard from "../components/ui/ServiceCard.astro";
 import FeatureIcon from "../components/ui/FeatureIcon.astro";
-import { homeContent, siteConfig } from "../data/site";
+import {
+  companyContent,
+  contactPageContent,
+  homeContent,
+  projectsPageContent,
+  servicesPageContent,
+  siteConfig,
+} from "../data/site";
 import { services } from "../data/services";
 import { projects } from "../data/projects";
 import { clients } from "../data/clients";
-import { pickPreviewItems } from "../utils/helpers";
 
-const featuredServices = pickPreviewItems(services, 4);
-const featuredProjects = pickPreviewItems(projects, 3);
+const hasDirectEmail = Boolean(siteConfig.contact.email);
+const hasDirectPhone = Boolean(siteConfig.contact.phone);
+const contactCards = [
+  hasDirectEmail
+    ? {
+        label: "Correo",
+        value: siteConfig.contact.email,
+        href: `mailto:${siteConfig.contact.email}`,
+      }
+    : {
+        label: "Cobertura",
+        value: siteConfig.contact.office,
+      },
+  hasDirectPhone
+    ? {
+        label: "Telefono",
+        value: siteConfig.contact.phone,
+        href: `tel:${siteConfig.contact.phone}`,
+      }
+    : {
+        label: "Horario",
+        value: siteConfig.contact.hours,
+      },
+  {
+    label: "Especialidades",
+    value: "Telecom, energia e infraestructura tecnica",
+  },
+];
 ---
 
 <MainLayout title={siteConfig.seo.defaultTitle} description={siteConfig.seo.defaultDescription}>
-  <HeroSection content={homeContent.hero} />
-  <CapabilitiesStrip items={homeContent.capabilities} />
-  <CompanyIntro
-    title={homeContent.presentation.title}
-    intro={homeContent.presentation.text}
-  />
+  <div id="inicio" data-scroll-section>
+    <HeroSection content={homeContent.hero} />
+    <div data-reveal class="reveal-on-scroll" style="--reveal-delay:120ms;">
+      <CapabilitiesStrip items={homeContent.capabilities} />
+    </div>
 
-  <section class="section-space pt-0">
-    <Container>
-      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-        <SectionTitle
-          eyebrow="Areas de trabajo"
-          title={homeContent.workAreas.title}
-          description={homeContent.workAreas.description}
-        />
-        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <section class="section-band section-space">
+      <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+        <div data-reveal class="reveal-on-scroll">
+          <SectionTitle
+            eyebrow={homeContent.highlights.eyebrow}
+            title={homeContent.highlights.title}
+            description={homeContent.highlights.description}
+          />
+        </div>
+        <div class="grid gap-4 md:grid-cols-3">
           {
-            homeContent.workAreas.items.map((item) => (
-              <div class="flex h-full rounded-[1.75rem] border border-slate-200 bg-white px-5 py-5 shadow-sm md:px-6 md:py-6">
-                <div class="flex min-w-0 items-start gap-4">
-                  <span class="icon-badge inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-white">
-                    <FeatureIcon kind={item.icon} />
-                  </span>
-                  <div class="min-w-0">
-                    <p class="text-wrap-balance text-lg font-semibold leading-7 tracking-tight text-slate-900">{item.title}</p>
-                    <p class="mt-2 text-sm leading-7 text-slate-500">{item.description}</p>
-                  </div>
-                </div>
+            homeContent.highlights.items.map((item, index) => (
+              <div
+                data-reveal
+                style={`--reveal-delay:${index * 90}ms;`}
+                class="card-surface lift-card reveal-on-scroll rounded-[1.75rem] border border-white/70 p-6"
+              >
+                <span class="icon-badge inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white">
+                  <FeatureIcon kind={item.icon} />
+                </span>
+                <p class="text-wrap-balance mt-5 text-lg font-semibold leading-7 tracking-tight text-slate-950">
+                  {item.title}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </Container>
+    </section>
+  </div>
+
+  <section id="empresa" data-scroll-section class="section-space">
+    <Container className="section-panel space-y-14 px-6 py-10 md:px-8 md:py-12 xl:px-10">
+      <div data-reveal class="reveal-on-scroll">
+        <SectionTitle
+          eyebrow={companyContent.hero.eyebrow}
+          title={companyContent.hero.title}
+          description={companyContent.hero.description}
+        />
+      </div>
+
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+        <div data-reveal class="card-surface reveal-on-scroll relative overflow-hidden rounded-[2rem] border border-white/70 p-8 md:p-10">
+          <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-sky-400/70 via-sky-200/40 to-transparent"></div>
+          <p class="text-sm font-semibold uppercase tracking-[0.28em] section-label">Quienes somos</p>
+          <h3 class="mt-5 text-wrap-balance text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
+            {homeContent.presentation.title}
+          </h3>
+          <div class="mt-6 space-y-5 text-base leading-8 text-slate-600">
+            <p>{homeContent.presentation.text}</p>
+            <p>{companyContent.intro}</p>
+          </div>
+        </div>
+
+        <div class="grid gap-6">
+          <div data-reveal class="lift-card reveal-on-scroll rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm" style="--reveal-delay:80ms;">
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">Mision</p>
+            <p class="mt-4 text-base leading-8 text-slate-600">{companyContent.mission}</p>
+          </div>
+          <div data-reveal class="lift-card reveal-on-scroll rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm" style="--reveal-delay:160ms;">
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">Vision</p>
+            <p class="mt-4 text-base leading-8 text-slate-600">{companyContent.vision}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div data-reveal class="reveal-on-scroll max-w-3xl space-y-4">
+          <p class="text-sm font-semibold uppercase tracking-[0.28em] section-label">Principios</p>
+          <h3 class="text-wrap-balance text-3xl font-semibold tracking-tight text-slate-950">
+            Valores que orientan nuestra forma de trabajar
+          </h3>
+          <p class="text-base leading-8 text-slate-600">
+            La cultura de FOS se sustenta en principios que fortalecen la relacion con clientes,
+            equipos y proyectos.
+          </p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {
+            companyContent.values.map((value, index) => (
+              <article
+                data-reveal
+                style={`--reveal-delay:${index * 70}ms;`}
+                class="card-surface lift-card reveal-on-scroll rounded-[2rem] border border-white/70 p-7"
+              >
+                <h3 class="text-2xl font-semibold tracking-tight text-slate-950">{value.title}</h3>
+                <p class="mt-4 text-sm leading-7 text-slate-600">{value.description}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div data-reveal class="reveal-on-scroll max-w-3xl space-y-4">
+          <p class="text-sm font-semibold uppercase tracking-[0.28em] section-label">{homeContent.clients.eyebrow}</p>
+          <h3 class="text-wrap-balance text-3xl font-semibold tracking-tight text-slate-950">
+            {homeContent.clients.title}
+          </h3>
+          <p class="text-base leading-8 text-slate-600">{homeContent.clients.description}</p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {
+            clients.map((client, index) => (
+              <div
+                data-reveal
+                style={`--reveal-delay:${index * 65}ms;`}
+                class="lift-card reveal-on-scroll rounded-[1.5rem] border border-slate-200 bg-white px-6 py-5 shadow-sm"
+              >
+                <p class="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-slate-500">Cliente</p>
+                <p class="text-lg font-semibold tracking-tight text-slate-900">{client.name}</p>
               </div>
             ))
           }
@@ -56,72 +176,117 @@ const featuredProjects = pickPreviewItems(projects, 3);
     </Container>
   </section>
 
-  <ServicesPreview
-    eyebrow={homeContent.servicesPreview.eyebrow}
-    title={homeContent.servicesPreview.title}
-    description={homeContent.servicesPreview.description}
-    services={featuredServices}
-  />
+  <section id="servicios" data-scroll-section class="section-band section-space">
+    <Container className="space-y-14">
+      <div data-reveal class="reveal-on-scroll">
+        <SectionTitle
+          eyebrow={servicesPageContent.hero.eyebrow}
+          title={servicesPageContent.hero.title}
+          description={servicesPageContent.hero.description}
+        />
+      </div>
 
-  <section class="section-band section-space">
-    <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-      <SectionTitle
-        eyebrow={homeContent.highlights.eyebrow}
-        title={homeContent.highlights.title}
-        description={homeContent.highlights.description}
-      />
-      <div class="grid gap-4 md:grid-cols-3">
-        {
-          homeContent.highlights.items.map((item) => (
-            <div class="card-surface rounded-[1.75rem] border border-white/70 p-6">
-              <span class="icon-badge inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white">
-                <FeatureIcon kind={item.icon} />
-              </span>
-              <p class="text-wrap-balance mt-5 text-lg font-semibold leading-7 tracking-tight text-slate-950">{item.title}</p>
-            </div>
-          ))
-        }
+      <div class="grid items-start gap-10 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
+        <div data-reveal class="reveal-on-scroll max-w-xl space-y-4">
+          <p class="text-sm font-semibold uppercase tracking-[0.28em] section-label">Areas de trabajo</p>
+          <h3 class="text-wrap-balance text-3xl font-semibold tracking-tight text-slate-950">
+            {homeContent.workAreas.title}
+          </h3>
+          <p class="text-base leading-8 text-slate-600">{homeContent.workAreas.description}</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 min-[1900px]:grid-cols-3">
+          {
+            homeContent.workAreas.items.map((item, index) => (
+              <div
+                data-reveal
+                style={`--reveal-delay:${index * 75}ms;`}
+                class="lift-card reveal-on-scroll flex h-full min-w-0 flex-col rounded-[1.75rem] border border-slate-200 bg-white px-5 py-5 shadow-sm md:px-6 md:py-6"
+              >
+                <div class="flex min-w-0 items-start gap-4">
+                  <span class="icon-badge inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-white">
+                    <FeatureIcon kind={item.icon} />
+                  </span>
+                  <p class="min-w-0 break-words text-wrap-balance text-lg font-semibold leading-7 tracking-tight text-slate-900">
+                    {item.title}
+                  </p>
+                </div>
+                <p class="mt-4 break-words text-sm leading-7 text-slate-500">{item.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-2">
+        {services.map((service, index) => <ServiceCard service={service} revealDelay={index * 90} />)}
       </div>
     </Container>
   </section>
 
-  <section class="section-space pt-0">
-    <Container className="space-y-10">
-      <SectionTitle
-        eyebrow={homeContent.clients.eyebrow}
-        title={homeContent.clients.title}
-        description={homeContent.clients.description}
-      />
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          clients.map((client) => (
-            <div class="rounded-[1.5rem] border border-slate-200 bg-white px-6 py-5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5">
-              <p class="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-slate-500">Cliente</p>
-              <p class="text-lg font-semibold tracking-tight text-slate-900">{client.name}</p>
-            </div>
-          ))
-        }
+  <section id="proyectos" data-scroll-section class="section-space">
+    <Container className="space-y-14">
+      <div data-reveal class="reveal-on-scroll">
+        <SectionTitle
+          eyebrow={projectsPageContent.hero.eyebrow}
+          title={projectsPageContent.hero.title}
+          description={projectsPageContent.hero.description}
+        />
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-2 2xl:grid-cols-3">
+        {projects.map((project, index) => <ProjectCard project={project} revealDelay={index * 90} />)}
       </div>
     </Container>
   </section>
 
-  <section class="section-space pt-0">
-    <Container className="space-y-12">
-      <SectionTitle
-        eyebrow={homeContent.projectsPreview.eyebrow}
-        title={homeContent.projectsPreview.title}
-        description={homeContent.projectsPreview.description}
-      />
-      <div class="grid gap-6 lg:grid-cols-3">
-        {featuredProjects.map((project) => <ProjectCard project={project} />)}
+  <section id="contacto" data-scroll-section class="section-band section-space">
+    <Container className="section-panel grid gap-8 px-6 py-10 md:px-8 md:py-12 xl:grid-cols-[0.85fr_1.15fr] xl:px-10">
+      <div class="space-y-8">
+        <div data-reveal class="reveal-on-scroll">
+          <SectionTitle
+            eyebrow={contactPageContent.hero.eyebrow}
+            title={contactPageContent.hero.title}
+            description={contactPageContent.hero.description}
+          />
+        </div>
+
+        <div class="grid gap-5">
+          {
+            contactCards.map((card, index) => (
+              <div
+                data-reveal
+                style={`--reveal-delay:${index * 80}ms;`}
+                class="lift-card reveal-on-scroll rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm"
+              >
+                <p class="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">{card.label}</p>
+                {
+                  card.href ? (
+                    <a href={card.href} class="mt-4 block text-lg font-semibold text-slate-900 hover:text-sky-700">
+                      {card.value}
+                    </a>
+                  ) : (
+                    <p class="mt-4 text-lg font-semibold text-slate-900">{card.value}</p>
+                  )
+                }
+                {
+                  index === 0 && !hasDirectEmail && (
+                    <p class="mt-2 text-sm text-slate-500">Atencion comercial coordinada desde el formulario.</p>
+                  )
+                }
+                {
+                  index === 1 && !hasDirectPhone && (
+                    <p class="mt-2 text-sm text-slate-500">Respuesta tecnica en horario habil.</p>
+                  )
+                }
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div data-reveal class="reveal-on-scroll" style="--reveal-delay:100ms;">
+        <ContactForm />
       </div>
     </Container>
   </section>
-
-  <CTASection
-    title={homeContent.cta.title}
-    description={homeContent.cta.description}
-    ctaLabel={homeContent.cta.cta.label}
-    ctaHref={homeContent.cta.cta.href}
-  />
 </MainLayout>

@@ -1,31 +1,21 @@
 ---
-import { siteConfig } from "../../data/site";
 import { navigation } from "../../data/navigation";
 import Container from "../ui/Container.astro";
 import Button from "../ui/Button.astro";
+import BrandLogo from "../ui/BrandLogo.astro";
 import Navigation from "./Navigation.astro";
-
-const currentPath = Astro.url.pathname;
 ---
 
 <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-slate-50/88 backdrop-blur-xl">
-  <Container className="flex items-center justify-between gap-6 py-4">
-    <a href="/" class="group inline-flex items-center gap-3">
-      <span class="brand-mark inline-flex h-12 min-w-[3.5rem] items-center justify-center rounded-[1.15rem] px-3 text-[0.95rem] font-black tracking-[0.28em] text-white">
-        <span class="translate-x-[0.08em]">FOS</span>
-      </span>
-      <span class="hidden sm:block">
-        <span class="block text-sm font-semibold uppercase tracking-[0.26em] text-slate-900">
-          {siteConfig.name}
-        </span>
-        <span class="block text-xs text-slate-500">{siteConfig.brand}</span>
-      </span>
+  <Container className="flex items-center justify-between gap-4 py-3.5">
+    <a href="/#inicio" class="group inline-flex items-center">
+      <BrandLogo />
     </a>
 
-    <Navigation items={navigation} currentPath={currentPath} />
+    <Navigation items={navigation} />
 
     <div class="flex items-center gap-3">
-      <Button href="/contacto" variant="dark" className="hidden md:inline-flex">Contacto</Button>
+      <Button href="/#contacto" variant="dark" className="hidden md:inline-flex">Contacto</Button>
       <a href="#mobile-menu" class="inline-flex rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 lg:hidden">
         Menu
       </a>
@@ -34,7 +24,67 @@ const currentPath = Astro.url.pathname;
 
   <div id="mobile-menu" class="border-t border-slate-200 bg-slate-50 lg:hidden">
     <Container className="py-4">
-      <Navigation items={navigation} currentPath={currentPath} mobile />
+      <Navigation items={navigation} mobile />
     </Container>
   </div>
 </header>
+
+<script is:inline>
+  const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
+  const sections = Array.from(document.querySelectorAll("[data-scroll-section]"));
+
+  if (navLinks.length && sections.length) {
+    const sectionIds = sections.map((section) => section.id).filter(Boolean);
+
+    const setActiveLink = (activeId) => {
+      navLinks.forEach((link) => {
+        const isActive = link.dataset.section === activeId;
+        link.dataset.active = String(isActive);
+
+        if (isActive) {
+          link.setAttribute("aria-current", "page");
+          return;
+        }
+
+        link.removeAttribute("aria-current");
+      });
+    };
+
+    const resolveSectionId = () => {
+      const hash = window.location.hash.replace("#", "");
+      return sectionIds.includes(hash) ? hash : "inicio";
+    };
+
+    setActiveLink(resolveSectionId());
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((left, right) => right.intersectionRatio - left.intersectionRatio);
+
+        if (visibleEntries[0]) {
+          setActiveLink(visibleEntries[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-35% 0px -45% 0px",
+        threshold: [0.2, 0.35, 0.5, 0.65],
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (link.dataset.section) {
+          setActiveLink(link.dataset.section);
+        }
+      });
+    });
+
+    window.addEventListener("hashchange", () => {
+      setActiveLink(resolveSectionId());
+    });
+  }
+</script>

@@ -9,9 +9,9 @@ export const services: ServiceCategory[] = [
   {
     title: "Telecomunicaciones y fibra optica",
     summary:
-      "Soluciones para despliegue, adecuacion y soporte de redes de comunicacion y enlaces de fibra optica.",
+      "Despliegue, adecuacion y soporte de redes de comunicacion y enlaces de fibra optica.",
     description:
-      "Desarrollamos proyectos de telecomunicaciones con enfoque tecnico y operativo para infraestructuras que requieren continuidad, orden de ejecucion y confiabilidad en campo.",
+      "Ejecutamos proyectos de telecomunicaciones para infraestructuras que requieren continuidad, orden y confiabilidad en campo.",
     capabilities: [
       "Instalacion y adecuacion de enlaces de fibra optica",
       "Redes de comunicacion y cableado especializado",
@@ -24,7 +24,7 @@ export const services: ServiceCategory[] = [
     summary:
       "Implementacion de redes, conectividad y plataformas fisicas para operaciones corporativas e institucionales.",
     description:
-      "Integramos redes de datos e infraestructura tecnologica para entornos que necesitan conectividad estable, organizacion fisica y capacidad de crecimiento.",
+      "Integramos redes e infraestructura tecnologica para entornos que necesitan conectividad estable y orden fisico.",
     capabilities: [
       "Redes locales y estructuracion de conectividad",
       "Cableado y ordenamiento de infraestructura tecnologica",
@@ -35,9 +35,9 @@ export const services: ServiceCategory[] = [
   {
     title: "Ingenieria electrica e industrial",
     summary:
-      "Desarrollo de soluciones electricas para proyectos industriales, comerciales e institucionales.",
+      "Soluciones electricas para proyectos industriales, comerciales e institucionales.",
     description:
-      "Ejecutamos trabajos de ingenieria electrica e industrial con criterio tecnico, seguridad operativa y orientacion al cumplimiento de alcance en obra y mantenimiento.",
+      "Ejecutamos trabajos de ingenieria electrica e industrial con criterio tecnico, seguridad operativa y enfoque en cumplimiento.",
     capabilities: [
       "Redes electricas de baja y media complejidad",
       "Montaje y adecuacion de sistemas electricos",
@@ -50,7 +50,7 @@ export const services: ServiceCategory[] = [
     summary:
       "Acompanamiento tecnico para diagnostico, continuidad operativa y mantenimiento preventivo o correctivo.",
     description:
-      "Brindamos soporte especializado para mantener infraestructura, redes y sistemas tecnicos en condiciones de operacion confiable, con respuesta oportuna y enfoque preventivo.",
+      "Brindamos soporte especializado para mantener infraestructura, redes y sistemas tecnicos en operacion confiable.",
     capabilities: [
       "Consultoria tecnica para proyectos e infraestructura existente",
       "Mantenimiento preventivo y correctivo",
@@ -63,7 +63,7 @@ export const services: ServiceCategory[] = [
     summary:
       "Provision de materiales, componentes y equipos de apoyo para proyectos tecnicos e infraestructura.",
     description:
-      "Complementamos la ejecucion de proyectos con suministro de materiales y equipos relacionados con telecomunicaciones, redes, energia e infraestructura tecnica.",
+      "Complementamos la ejecucion con materiales y equipos para telecomunicaciones, redes, energia e infraestructura tecnica.",
     capabilities: [
       "Materiales para redes y conectividad",
       "Componentes para infraestructura electrica y tecnica",

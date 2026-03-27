@@ -2,20 +2,19 @@
 import { navigation } from "../../data/navigation";
 import { footerContent, siteConfig } from "../../data/site";
 import Container from "../ui/Container.astro";
+import BrandLogo from "../ui/BrandLogo.astro";
+
+const socialLinks = siteConfig.social.filter((item) => item.href.trim() && item.href !== "#");
+const hasDirectEmail = Boolean(siteConfig.contact.email);
+const hasDirectPhone = Boolean(siteConfig.contact.phone);
 ---
 
 <footer class="border-t border-slate-200 bg-slate-950 text-slate-200">
   <Container className="grid gap-12 py-14 md:grid-cols-[1.3fr_0.8fr_0.9fr]">
     <div class="space-y-4">
-      <div class="inline-flex items-center gap-3">
-        <span class="brand-mark inline-flex h-12 min-w-[3.5rem] items-center justify-center rounded-[1.15rem] px-3 text-[0.95rem] font-black tracking-[0.28em] text-white">
-          <span class="translate-x-[0.08em]">FOS</span>
-        </span>
-        <div>
-          <p class="text-sm font-semibold uppercase tracking-[0.26em] text-white">{siteConfig.name}</p>
-          <p class="text-sm text-slate-400">{siteConfig.brand}</p>
-        </div>
-      </div>
+      <a href="/#inicio" class="inline-flex items-center">
+        <BrandLogo panel className="w-[13rem] sm:w-[16.5rem]" />
+      </a>
       <p class="max-w-md text-sm leading-7 text-slate-400">{footerContent.description}</p>
     </div>
 
@@ -39,36 +38,56 @@ import Container from "../ui/Container.astro";
         <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-white">{footerContent.contactLabel}</h2>
         <ul class="mt-4 space-y-3 text-sm text-slate-400">
           <li>{siteConfig.contact.office}</li>
-          <li>
-            <a href={`mailto:${siteConfig.contact.email}`} class="hover:text-white">
-              {siteConfig.contact.email}
-            </a>
-          </li>
-          <li>
-            <a href={`tel:${siteConfig.contact.phone}`} class="hover:text-white">
-              {siteConfig.contact.phone}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-white">{footerContent.socialLabel}</h2>
-        <div class="mt-4 flex flex-wrap gap-3 text-sm text-slate-400">
+          <li>{siteConfig.contact.hours}</li>
           {
-            siteConfig.social.map((item) => (
-              <a href={item.href} class="rounded-full border border-white/10 px-4 py-2 hover:border-white/25 hover:text-white">
-                {item.label}
-              </a>
-            ))
+            hasDirectEmail && (
+              <li>
+                <a href={`mailto:${siteConfig.contact.email}`} class="hover:text-white">
+                  {siteConfig.contact.email}
+                </a>
+              </li>
+            )
           }
-        </div>
+          {
+            hasDirectPhone && (
+              <li>
+                <a href={`tel:${siteConfig.contact.phone}`} class="hover:text-white">
+                  {siteConfig.contact.phone}
+                </a>
+              </li>
+            )
+          }
+        </ul>
+        {
+          !hasDirectEmail && !hasDirectPhone && (
+            <a href="/#contacto" class="mt-5 inline-flex rounded-full border border-white/10 px-4 py-2 text-sm text-slate-300 hover:border-white/25 hover:text-white">
+              Solicitar contacto
+            </a>
+          )
+        }
       </div>
+      {
+        socialLinks.length > 0 && (
+          <div>
+            <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-white">{footerContent.socialLabel}</h2>
+            <div class="mt-4 flex flex-wrap gap-3 text-sm text-slate-400">
+              {
+                socialLinks.map((item) => (
+                  <a href={item.href} class="rounded-full border border-white/10 px-4 py-2 hover:border-white/25 hover:text-white">
+                    {item.label}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        )
+      }
     </div>
   </Container>
   <div class="border-t border-white/10">
     <Container className="flex flex-col gap-3 py-5 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
       <p>&copy; {new Date().getFullYear()} {siteConfig.name}. Todos los derechos reservados.</p>
-      <p>Sitio estatico preparado para futuras integraciones y despliegue en Cloudflare Pages.</p>
+      <p>Infraestructura, conectividad y soporte tecnico para proyectos que exigen confianza.</p>
     </Container>
   </div>
 </footer>

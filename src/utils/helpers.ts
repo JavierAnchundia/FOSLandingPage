@@ -1,5 +1,3 @@
-import type { NavigationItem } from "../data/navigation";
-
 export type FeatureIconKind =
   | "access"
   | "local"
@@ -12,9 +10,6 @@ export type FeatureIconKind =
   | "connectivity"
   | "infrastructure"
   | "corporate";
-
-export const isActivePath = (pathname: string, href: string) =>
-  pathname === href;
 
 export const pickPreviewItems = <T>(items: T[], count: number) =>
   items.slice(0, count);
@@ -50,5 +45,3 @@ export const getProjectIconKind = (category: string): FeatureIconKind => {
   return "projects";
 };
 
-export const getNavigationLabels = (items: NavigationItem[]) =>
-  items.map((item) => item.label);

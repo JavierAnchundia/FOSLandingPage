@@ -3,21 +3,38 @@
 @tailwind utilities;
 
 :root {
-  --accent-dark: #3d8fb0;
-  --shadow: 0 24px 60px rgba(4, 12, 20, 0.12);
+  --brand-deep: #0a2f57;
+  --brand-deep-soft: #12446f;
+  --brand-cyan: #21c7d5;
+  --brand-cyan-soft: #66d8de;
+  --brand-gold: #f2c230;
+  --brand-lime: #7bc043;
+  --accent-dark: #1fb5cd;
+  --shadow: 0 26px 70px rgba(4, 12, 20, 0.1);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+[data-scroll-section] {
+  scroll-margin-top: 7rem;
+}
+
 body {
-  font-family: "Aptos", "Trebuchet MS", "Segoe UI", sans-serif;
+  font-family: "Aptos", "Segoe UI Variable Text", "Segoe UI", sans-serif;
   background:
     radial-gradient(circle at top right, rgba(84, 130, 184, 0.14), transparent 22%),
     radial-gradient(circle at top left, rgba(121, 151, 180, 0.12), transparent 26%),
     #edf2f6;
   color: #223445;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Aptos Display", "Aptos", "Segoe UI Variable Display", "Segoe UI", sans-serif;
+  letter-spacing: -0.035em;
 }
 
 a,
@@ -38,11 +55,11 @@ textarea {
 }
 
 .section-space {
-  @apply py-24 md:py-28;
+  @apply py-28 md:py-32;
 }
 
 .card-surface {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
   box-shadow: var(--shadow);
 }
@@ -60,9 +77,9 @@ textarea {
 
 .hero-glow {
   background:
-    radial-gradient(circle at 18% 18%, rgba(85, 119, 168, 0.28), transparent 28%),
-    radial-gradient(circle at 82% 14%, rgba(70, 98, 136, 0.22), transparent 26%),
-    linear-gradient(135deg, #07111a 0%, #0f2233 46%, #0c1722 100%);
+    radial-gradient(circle at 18% 18%, rgba(34, 199, 214, 0.25), transparent 26%),
+    radial-gradient(circle at 82% 14%, rgba(123, 192, 67, 0.16), transparent 24%),
+    linear-gradient(135deg, #07111a 0%, #0d2236 48%, #0b1827 100%);
 }
 
 .eyebrow {
@@ -71,7 +88,7 @@ textarea {
 
 .button-primary {
   @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-white;
-  background: linear-gradient(135deg, #18344a 0%, #214763 100%);
+  background: linear-gradient(135deg, var(--brand-deep) 0%, var(--brand-deep-soft) 100%);
   box-shadow: 0 14px 30px rgba(8, 21, 33, 0.2);
 }
 
@@ -86,6 +103,7 @@ textarea {
 }
 
 .button-secondary:hover {
+  border-color: rgba(102, 216, 222, 0.55);
   background: rgba(255, 255, 255, 0.08);
 }
 
@@ -101,11 +119,13 @@ textarea {
 }
 
 .section-band {
-  background: linear-gradient(180deg, rgba(8, 18, 29, 0.02), rgba(8, 18, 29, 0.06));
+  background:
+    linear-gradient(180deg, rgba(8, 18, 29, 0.015), rgba(8, 18, 29, 0.055)),
+    radial-gradient(circle at top left, rgba(104, 154, 198, 0.09), transparent 24%);
 }
 
 .icon-badge {
-  background: linear-gradient(135deg, #0f2435 0%, #17344a 100%);
+  background: linear-gradient(135deg, var(--brand-deep) 0%, var(--brand-deep-soft) 100%);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
@@ -116,4 +136,72 @@ textarea {
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.1),
     0 12px 26px rgba(8, 21, 33, 0.14);
+}
+
+.section-panel {
+  @apply rounded-[2.5rem] border border-slate-200/80 bg-white/70;
+  box-shadow: 0 22px 55px rgba(13, 29, 44, 0.06);
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 720ms ease,
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lift-card {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.lift-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 65px rgba(10, 24, 38, 0.12);
+}
+
+.hero-float {
+  animation: heroFloat 8s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-on-scroll,
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .lift-card,
+  .lift-card:hover,
+  .hero-float {
+    animation: none;
+    transform: none;
+    transition: none;
+  }
 }

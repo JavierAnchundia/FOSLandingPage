@@ -1,0 +1,18 @@
+---
+type Props = {
+  className?: string;
+  panel?: boolean;
+};
+
+const { className = "", panel = false } = Astro.props;
+---
+
+<span class:list={[panel && "rounded-[1.6rem] bg-white/96 px-4 py-3 shadow-[0_18px_40px_rgba(9,17,26,0.12)]", "inline-flex items-center"]}>
+  <img
+    src="/images/fos-logo.svg"
+    alt="FOS Ecuador S.A. fibra optica y sistemas"
+    class:list={["h-auto w-[11rem] sm:w-[15.75rem]", className]}
+    loading="eager"
+    decoding="async"
+  />
+</span>

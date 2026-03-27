@@ -126,15 +126,12 @@ export const siteConfig: SiteConfig = {
     ogImage: "/images/og-fos.svg",
   },
   contact: {
-    email: "contacto@empresa.com",
-    phone: "+593 00 000 0000",
-    office: "Ecuador",
+    email: "",
+    phone: "",
+    office: "Cobertura nacional - Ecuador",
     hours: "Lunes a viernes, 08:30 - 17:30",
   },
-  social: [
-    { label: "LinkedIn", href: "#" },
-    { label: "Facebook", href: "#" },
-  ],
+  social: [],
   values: [
     {
       title: "Honestidad",
@@ -166,56 +163,56 @@ export const siteConfig: SiteConfig = {
 
 export const homeContent: HomeContent = {
   hero: {
-    eyebrow: "Ingenieria aplicada para proyectos que no pueden detenerse",
-    title: "Infraestructura, conectividad y soporte tecnico para proyectos que exigen confianza",
+    eyebrow: "Ingenieria aplicada para operaciones que no pueden detenerse",
+    title: "Conectividad, energia y soporte tecnico en una sola empresa",
     description:
-      "En FOS Ecuador S.A. reunimos telecomunicaciones, fibra optica, redes, ingenieria electrica, automatizacion y mantenimiento tecnico para resolver necesidades reales con orden, seguridad y capacidad operativa.",
+      "Integramos telecomunicaciones, fibra optica, redes, ingenieria electrica y mantenimiento para ejecutar proyectos con criterio tecnico y respuesta en campo.",
     primaryCta: {
       label: "Conoce lo que hacemos",
-      href: "/servicios",
+      href: "/#servicios",
     },
     secondaryCta: {
       label: "Hablemos de tu proyecto",
-      href: "/contacto",
+      href: "/#contacto",
     },
     highlights: [
-      "Conectividad e infraestructura tecnica en una sola empresa",
-      "Capacidad para obra, implementacion y mantenimiento",
-      "Respuesta profesional para entornos institucionales, industriales y comerciales",
+      "Una sola coordinacion para varias especialidades",
+      "Implementacion, soporte y mantenimiento",
+      "Experiencia en entornos institucionales, comerciales e industriales",
     ],
     panelItems: [
       {
         label: "Cobertura tecnica",
-        text: "Telecomunicaciones, energia, automatizacion e infraestructura",
+        text: "Telecom, energia e infraestructura",
       },
       {
-        label: "Como trabajamos",
-        text: "Planeacion clara, ejecucion responsable y acompanamiento tecnico",
+        label: "Forma de trabajo",
+        text: "Planeacion clara y ejecucion responsable",
       },
     ],
     bottomItems: [
       {
         label: "Propuesta",
-        text: "Una sola empresa para coordinar especialidades tecnicas que suelen manejarse por separado.",
+        text: "Integramos especialidades tecnicas en una misma ruta de trabajo.",
       },
       {
         label: "Sectores",
-        text: "Experiencia en proyectos institucionales, industriales, comerciales y de servicios.",
+        text: "Experiencia en clientes institucionales, comerciales e industriales.",
       },
       {
-        label: "Experiencia",
-        text: "Trayectoria comprobada en comunicaciones, redes electricas e infraestructura operativa.",
+        label: "Respaldo",
+        text: "Acompanamiento tecnico antes, durante y despues de la ejecucion.",
       },
     ],
   },
   presentation: {
-    title: "Una empresa tecnica pensada para resolver proyectos completos",
-    text: "FOS Ecuador S.A. integra conectividad, energia e infraestructura tecnica para que cada proyecto avance con mayor coordinacion y menos friccion. Nuestro equipo combina experiencia de campo, criterio profesional y enfoque en resultados para acompanar implementaciones, mejoras y mantenimiento especializado.",
+    title: "Una empresa, varias especialidades tecnicas",
+    text: "FOS Ecuador S.A. integra conectividad, energia e infraestructura para que cada proyecto avance con mas coordinacion, menos friccion y mejor capacidad de respuesta.",
   },
   workAreas: {
     title: "Especialidades clave",
     description:
-      "Estas son las areas en las que FOS aporta mayor valor cuando un proyecto necesita ejecucion tecnica confiable y capacidad de respuesta.",
+      "Estas son las areas donde FOS aporta mas valor cuando un proyecto exige ejecucion tecnica y continuidad operativa.",
     items: [
       {
         title: "Telecomunicaciones",
@@ -263,9 +260,9 @@ export const homeContent: HomeContent = {
   },
   highlights: {
     eyebrow: "Fortalezas de FOS",
-    title: "Tres razones por las que las empresas confian en FOS",
+    title: "Por que trabajar con FOS",
     description:
-      "Nuestra propuesta combina experiencia real, capacidad operativa y una forma de trabajo enfocada en cumplir con criterio tecnico.",
+      "Combinamos experiencia, capacidad operativa y una ejecucion enfocada en resultados.",
     items: [
       {
         title: "Capacidad para integrar conectividad, energia e infraestructura en una sola solucion",
@@ -283,15 +280,15 @@ export const homeContent: HomeContent = {
   },
   clients: {
     eyebrow: "Clientes institucionales",
-    title: "Organizaciones que han confiado en nuestro trabajo",
+    title: "Clientes que respaldan nuestra experiencia",
     description:
-      "Nuestra experiencia incluye colaboraciones con entidades publicas, companias nacionales y clientes del sector productivo y comercial.",
+      "Nuestra trayectoria incluye entidades publicas, empresas nacionales y organizaciones del sector productivo.",
   },
   projectsPreview: {
     eyebrow: "Proyectos relevantes",
-    title: "Experiencia real en proyectos que exigen ejecucion y criterio tecnico",
+    title: "Experiencia en proyectos que exigen ejecucion y criterio tecnico",
     description:
-      "Esta seleccion resume parte de la trayectoria de FOS en comunicaciones, energia e infraestructura para distintos tipos de cliente.",
+      "Una muestra de la trayectoria de FOS en comunicaciones, energia e infraestructura.",
   },
   capabilities: [
     {
@@ -314,10 +311,10 @@ export const homeContent: HomeContent = {
   cta: {
     title: "Si tu proyecto necesita ejecucion tecnica seria, conversemos",
     description:
-      "Podemos ayudarte a evaluar alcances, ordenar prioridades y ejecutar una solucion tecnica alineada a la necesidad real de tu operacion.",
+      "Podemos ayudarte a ordenar el alcance y definir el siguiente paso tecnico.",
     cta: {
       label: "Solicitar una conversacion",
-      href: "/contacto",
+      href: "/#contacto",
     },
   },
 };
@@ -330,16 +327,16 @@ export const companyContent = {
   },
   hero: {
     eyebrow: "Empresa",
-    title: "Sobre FOS Ecuador S.A.",
+    title: "Una empresa tecnica con enfoque integral",
     description:
-      "Somos una empresa ecuatoriana que integra varias especialidades tecnicas para ayudar a nuestros clientes a ejecutar proyectos con mayor orden, respaldo y continuidad.",
+      "Integramos conectividad, energia e infraestructura para ejecutar proyectos con orden, respaldo y continuidad.",
   } satisfies PageContent,
   intro:
-    "Nuestra fortaleza esta en articular disciplinas que normalmente se gestionan por separado. Eso nos permite responder con mas coherencia cuando un proyecto necesita conectividad, infraestructura, energia y soporte operativo al mismo tiempo.",
+    "Nuestra fortaleza esta en coordinar disciplinas que normalmente se gestionan por separado. Asi respondemos con mas claridad cuando un proyecto necesita conectividad, infraestructura, energia y soporte operativo al mismo tiempo.",
   mission:
-    "Entregar soluciones tecnicas confiables que ayuden a nuestros clientes a operar con mayor seguridad, continuidad y control.",
+    "Entregar soluciones tecnicas confiables que ayuden a nuestros clientes a operar con seguridad, continuidad y control.",
   vision:
-    "Ser un aliado tecnico de referencia en Ecuador para proyectos de comunicaciones, energia, automatizacion e infraestructura.",
+    "Ser un aliado tecnico de referencia en Ecuador para proyectos de comunicaciones, energia e infraestructura.",
   values: siteConfig.values,
   cta: {
     title: "Descubre como esta capacidad tecnica se traduce en servicios concretos",
@@ -347,7 +344,7 @@ export const companyContent = {
       "Explora nuestras categorias de servicio y encuentra la linea de apoyo que mejor se ajusta a tu proyecto.",
     cta: {
       label: "Ver servicios",
-      href: "/servicios",
+      href: "/#servicios",
     },
   },
 };
@@ -360,15 +357,15 @@ export const servicesPageContent = {
   },
   hero: {
     eyebrow: "Servicios",
-    title: "Categorias de servicio",
+    title: "Servicios tecnicos organizados por categoria",
     description:
-      "Presentamos nuestras capacidades por categoria para que identifiques con rapidez el tipo de solucion que FOS puede aportar a tu proyecto.",
+      "Cada categoria resume una linea de apoyo concreta para proyectos de conectividad, energia e infraestructura.",
   } satisfies PageContent,
   section: {
     eyebrow: "Capacidades",
-    title: "Servicios claros, organizados y enfocados en necesidades reales",
+    title: "Servicios claros y enfocados en necesidades reales",
     description:
-      "Cada categoria resume una linea de trabajo con capacidades concretas, para que puedas evaluar el alcance sin perderte en listas extensas.",
+      "Cada categoria concentra capacidades concretas para evaluar el alcance sin perderse en listas extensas.",
   },
   cta: {
     title: "Cuentanos que necesitas y te orientamos por la categoria correcta",
@@ -376,7 +373,7 @@ export const servicesPageContent = {
       "Si ya tienes un requerimiento definido o todavia estas evaluando opciones, podemos ayudarte a aterrizar el siguiente paso.",
     cta: {
       label: "Hablar con nuestro equipo",
-      href: "/contacto",
+      href: "/#contacto",
     },
   },
 };
@@ -389,15 +386,15 @@ export const projectsPageContent = {
   },
   hero: {
     eyebrow: "Experiencia",
-    title: "Proyectos y trayectoria",
+    title: "Proyectos y experiencia",
     description:
-      "Nuestra trayectoria incluye proyectos en comunicaciones, redes electricas, infraestructura institucional e iniciativas industriales con distintos niveles de complejidad.",
+      "Nuestra trayectoria incluye proyectos en comunicaciones, redes electricas e infraestructura para distintos niveles de complejidad.",
   } satisfies PageContent,
   section: {
     eyebrow: "Proyectos destacados",
-    title: "Referencias reales que muestran como trabajamos",
+    title: "Referencias reales de nuestro trabajo",
     description:
-      "Estos proyectos muestran la variedad de sectores, alcances y retos tecnicos en los que FOS ha participado.",
+      "Estos proyectos muestran la variedad de sectores y retos tecnicos en los que FOS ha participado.",
   },
   cta: {
     title: "Llevemos esa experiencia a tu siguiente reto tecnico",
@@ -405,7 +402,7 @@ export const projectsPageContent = {
       "Si buscas un aliado con experiencia de campo y capacidad de ejecucion, podemos conversar sobre el alcance de tu proyecto.",
     cta: {
       label: "Quiero conversar",
-      href: "/contacto",
+      href: "/#contacto",
     },
   },
 };
@@ -418,15 +415,15 @@ export const contactPageContent = {
   },
   hero: {
     eyebrow: "Contacto",
-    title: "Contactanos",
+    title: "Hablemos de tu proyecto",
     description:
-      "Cuentanos tu necesidad y te ayudaremos a definir el mejor camino para tu proyecto de conectividad, energia o infraestructura tecnica.",
+      "Comparte tu necesidad y te ayudaremos a definir el siguiente paso para tu proyecto de conectividad, energia o infraestructura.",
   } satisfies PageContent,
   section: {
     eyebrow: "Canales",
-    title: "Estamos listos para escuchar tu requerimiento",
+    title: "Canales de contacto",
     description:
-      "Los datos visibles se mantienen como placeholders editables para que puedas reemplazarlos mas adelante por informacion comercial definitiva.",
+      "Puedes escribirnos por los canales directos o dejar tu mensaje en el formulario.",
   },
 };
 

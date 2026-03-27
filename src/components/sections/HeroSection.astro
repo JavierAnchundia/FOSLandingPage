@@ -11,8 +11,8 @@ const { content } = Astro.props;
 ---
 
 <section class="hero-glow overflow-hidden">
-  <Container className="grid min-h-[calc(100vh-80px)] items-center gap-14 py-20 md:py-24 lg:grid-cols-[1.05fr_0.95fr] xl:gap-16 xl:py-28">
-    <div class="relative z-10 space-y-8">
+  <Container className="grid min-h-[calc(100vh-88px)] items-center gap-16 py-24 md:py-28 lg:grid-cols-[1.02fr_0.98fr] xl:gap-20 xl:py-32">
+    <div data-reveal class="reveal-on-scroll relative z-10 space-y-8">
       <div class="eyebrow border-white/10 bg-white/5 text-slate-200">
         <span class="h-2 w-2 rounded-full bg-sky-300"></span>
         {content.eyebrow}
@@ -29,7 +29,7 @@ const { content } = Astro.props;
       <div class="grid max-w-3xl gap-3 md:grid-cols-3">
         {
           content.highlights.map((item) => (
-            <div class="technical-panel h-full rounded-[1.4rem] border border-white/10 px-4 py-4">
+            <div class="technical-panel h-full rounded-[1.5rem] border border-white/10 px-5 py-5">
               <p class="text-sm leading-6 text-slate-200">{item}</p>
             </div>
           ))
@@ -42,19 +42,19 @@ const { content } = Astro.props;
       </div>
     </div>
 
-    <div class="relative xl:pb-24">
+    <div data-reveal class="reveal-on-scroll relative xl:pb-24" style="--reveal-delay:140ms;">
       <div class="grid-overlay absolute inset-0 rounded-[2.2rem] border border-white/10 opacity-50"></div>
-      <div class="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/30 md:p-6">
+      <div class="hero-float relative overflow-hidden rounded-[2.4rem] border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/30 md:p-6">
         <img
           src="/images/hero-network.svg"
           alt="Representacion abstracta de red y conectividad"
           class="h-full w-full rounded-[1.5rem] object-cover"
           loading="eager"
         />
-        <div class="mt-6 grid gap-4 md:grid-cols-2">
+        <div class="mt-7 grid gap-4 md:grid-cols-2">
           {
             content.panelItems.map((item) => (
-              <div class="technical-panel rounded-[1.5rem] border border-white/10 p-5">
+              <div class="technical-panel rounded-[1.6rem] border border-white/10 p-6">
                 <p class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">{item.label}</p>
                 <p class="mt-3 text-xl font-semibold leading-8 text-white md:text-2xl">{item.text}</p>
               </div>
@@ -64,7 +64,7 @@ const { content } = Astro.props;
         <div class="mt-6 grid gap-4 xl:grid-cols-3">
           {
             content.bottomItems.map((item) => (
-              <div class="technical-panel rounded-[1.5rem] border border-white/10 px-5 py-5">
+              <div class="technical-panel rounded-[1.6rem] border border-white/10 px-5 py-6">
                 <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{item.label}</p>
                 <p class="mt-2 text-sm leading-6 text-slate-200">{item.text}</p>
               </div>
