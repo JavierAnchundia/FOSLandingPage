@@ -1,0 +1,127 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import HeroSection from "../components/sections/HeroSection.astro";
+import CapabilitiesStrip from "../components/sections/CapabilitiesStrip.astro";
+import CompanyIntro from "../components/sections/CompanyIntro.astro";
+import ServicesPreview from "../components/sections/ServicesPreview.astro";
+import CTASection from "../components/sections/CTASection.astro";
+import Container from "../components/ui/Container.astro";
+import SectionTitle from "../components/ui/SectionTitle.astro";
+import ProjectCard from "../components/ui/ProjectCard.astro";
+import FeatureIcon from "../components/ui/FeatureIcon.astro";
+import { homeContent, siteConfig } from "../data/site";
+import { services } from "../data/services";
+import { projects } from "../data/projects";
+import { clients } from "../data/clients";
+import { pickPreviewItems } from "../utils/helpers";
+
+const featuredServices = pickPreviewItems(services, 4);
+const featuredProjects = pickPreviewItems(projects, 3);
+---
+
+<MainLayout title={siteConfig.seo.defaultTitle} description={siteConfig.seo.defaultDescription}>
+  <HeroSection content={homeContent.hero} />
+  <CapabilitiesStrip items={homeContent.capabilities} />
+  <CompanyIntro
+    title={homeContent.presentation.title}
+    intro={homeContent.presentation.text}
+  />
+
+  <section class="section-space pt-0">
+    <Container>
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <SectionTitle
+          eyebrow="Areas de trabajo"
+          title={homeContent.workAreas.title}
+          description={homeContent.workAreas.description}
+        />
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {
+            homeContent.workAreas.items.map((item) => (
+              <div class="flex h-full rounded-[1.75rem] border border-slate-200 bg-white px-5 py-5 shadow-sm md:px-6 md:py-6">
+                <div class="flex min-w-0 items-start gap-4">
+                  <span class="icon-badge inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-white">
+                    <FeatureIcon kind={item.icon} />
+                  </span>
+                  <div class="min-w-0">
+                    <p class="text-wrap-balance text-lg font-semibold leading-7 tracking-tight text-slate-900">{item.title}</p>
+                    <p class="mt-2 text-sm leading-7 text-slate-500">{item.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <ServicesPreview
+    eyebrow={homeContent.servicesPreview.eyebrow}
+    title={homeContent.servicesPreview.title}
+    description={homeContent.servicesPreview.description}
+    services={featuredServices}
+  />
+
+  <section class="section-band section-space">
+    <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+      <SectionTitle
+        eyebrow={homeContent.highlights.eyebrow}
+        title={homeContent.highlights.title}
+        description={homeContent.highlights.description}
+      />
+      <div class="grid gap-4 md:grid-cols-3">
+        {
+          homeContent.highlights.items.map((item) => (
+            <div class="card-surface rounded-[1.75rem] border border-white/70 p-6">
+              <span class="icon-badge inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white">
+                <FeatureIcon kind={item.icon} />
+              </span>
+              <p class="text-wrap-balance mt-5 text-lg font-semibold leading-7 tracking-tight text-slate-950">{item.title}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <section class="section-space pt-0">
+    <Container className="space-y-10">
+      <SectionTitle
+        eyebrow={homeContent.clients.eyebrow}
+        title={homeContent.clients.title}
+        description={homeContent.clients.description}
+      />
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          clients.map((client) => (
+            <div class="rounded-[1.5rem] border border-slate-200 bg-white px-6 py-5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5">
+              <p class="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-slate-500">Cliente</p>
+              <p class="text-lg font-semibold tracking-tight text-slate-900">{client.name}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <section class="section-space pt-0">
+    <Container className="space-y-12">
+      <SectionTitle
+        eyebrow={homeContent.projectsPreview.eyebrow}
+        title={homeContent.projectsPreview.title}
+        description={homeContent.projectsPreview.description}
+      />
+      <div class="grid gap-6 lg:grid-cols-3">
+        {featuredProjects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </Container>
+  </section>
+
+  <CTASection
+    title={homeContent.cta.title}
+    description={homeContent.cta.description}
+    ctaLabel={homeContent.cta.cta.label}
+    ctaHref={homeContent.cta.cta.href}
+  />
+</MainLayout>

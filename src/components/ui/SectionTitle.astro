@@ -1,0 +1,31 @@
+---
+type Props = {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  align?: "left" | "center";
+  inverse?: boolean;
+};
+
+const { eyebrow, title, description, align = "left", inverse = false } = Astro.props;
+---
+
+<div class:list={["space-y-4", align === "center" && "mx-auto max-w-3xl text-center"]}>
+  {
+    eyebrow && (
+      <p class:list={["text-sm font-semibold uppercase tracking-[0.28em]", inverse ? "text-emerald-300" : "section-label"]}>
+        {eyebrow}
+      </p>
+    )
+  }
+  <h2 class:list={["text-3xl font-semibold tracking-tight md:text-5xl", inverse ? "text-white" : "text-slate-950"]}>
+    {title}
+  </h2>
+  {
+    description && (
+      <p class:list={["text-base leading-8 md:text-lg", inverse ? "text-slate-300" : "text-slate-600"]}>
+        {description}
+      </p>
+    )
+  }
+</div>

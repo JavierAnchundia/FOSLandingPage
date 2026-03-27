@@ -1,0 +1,40 @@
+---
+import { siteConfig } from "../../data/site";
+import { navigation } from "../../data/navigation";
+import Container from "../ui/Container.astro";
+import Button from "../ui/Button.astro";
+import Navigation from "./Navigation.astro";
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-slate-200/70 bg-slate-50/88 backdrop-blur-xl">
+  <Container className="flex items-center justify-between gap-6 py-4">
+    <a href="/" class="group inline-flex items-center gap-3">
+      <span class="brand-mark inline-flex h-12 min-w-[3.5rem] items-center justify-center rounded-[1.15rem] px-3 text-[0.95rem] font-black tracking-[0.28em] text-white">
+        <span class="translate-x-[0.08em]">FOS</span>
+      </span>
+      <span class="hidden sm:block">
+        <span class="block text-sm font-semibold uppercase tracking-[0.26em] text-slate-900">
+          {siteConfig.name}
+        </span>
+        <span class="block text-xs text-slate-500">{siteConfig.brand}</span>
+      </span>
+    </a>
+
+    <Navigation items={navigation} currentPath={currentPath} />
+
+    <div class="flex items-center gap-3">
+      <Button href="/contacto" variant="dark" className="hidden md:inline-flex">Contacto</Button>
+      <a href="#mobile-menu" class="inline-flex rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 lg:hidden">
+        Menu
+      </a>
+    </div>
+  </Container>
+
+  <div id="mobile-menu" class="border-t border-slate-200 bg-slate-50 lg:hidden">
+    <Container className="py-4">
+      <Navigation items={navigation} currentPath={currentPath} mobile />
+    </Container>
+  </div>
+</header>

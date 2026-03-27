@@ -1,0 +1,49 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import PageHero from "../components/sections/PageHero.astro";
+import ContactForm from "../components/sections/ContactForm.astro";
+import Container from "../components/ui/Container.astro";
+import SectionTitle from "../components/ui/SectionTitle.astro";
+import { contactPageContent, siteConfig } from "../data/site";
+---
+
+<MainLayout title={contactPageContent.seo.title} description={contactPageContent.seo.description}>
+  <PageHero
+    eyebrow={contactPageContent.hero.eyebrow}
+    title={contactPageContent.hero.title}
+    description={contactPageContent.hero.description}
+  />
+
+  <section class="section-space">
+    <Container className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+      <div class="space-y-8">
+        <SectionTitle
+          eyebrow={contactPageContent.section.eyebrow}
+          title={contactPageContent.section.title}
+          description={contactPageContent.section.description}
+        />
+        <div class="grid gap-5">
+          <div class="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm">
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">Correo</p>
+            <a href={`mailto:${siteConfig.contact.email}`} class="mt-4 block text-lg font-semibold text-slate-900 hover:text-emerald-700">
+              {siteConfig.contact.email}
+            </a>
+          </div>
+          <div class="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm">
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">Telefono</p>
+            <a href={`tel:${siteConfig.contact.phone}`} class="mt-4 block text-lg font-semibold text-slate-900 hover:text-emerald-700">
+              {siteConfig.contact.phone}
+            </a>
+          </div>
+          <div class="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm">
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">Ubicacion</p>
+            <p class="mt-4 text-lg font-semibold text-slate-900">{siteConfig.contact.office}</p>
+            <p class="mt-2 text-sm text-slate-500">{siteConfig.contact.hours}</p>
+          </div>
+        </div>
+      </div>
+
+      <ContactForm />
+    </Container>
+  </section>
+</MainLayout>

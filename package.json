@@ -1,0 +1,26 @@
+{
+  "name": "fosecuador",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio corporativo estatico para FOS construido con Astro y Tailwind CSS.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [
+    "astro",
+    "tailwind",
+    "telecomunicaciones",
+    "corporativo"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^6.1.0",
+    "tailwindcss": "^3.4.19"
+  }
+}

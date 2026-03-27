@@ -1,0 +1,24 @@
+---
+import type { ServiceCategory } from "../../data/services";
+import Container from "../ui/Container.astro";
+import SectionTitle from "../ui/SectionTitle.astro";
+import ServiceCard from "../ui/ServiceCard.astro";
+
+type Props = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  services: ServiceCategory[];
+};
+
+const { eyebrow, title, description, services } = Astro.props;
+---
+
+<section class="section-space bg-slate-950">
+  <Container className="space-y-12">
+    <SectionTitle eyebrow={eyebrow} title={title} description={description} inverse />
+    <div class="grid gap-6 lg:grid-cols-2">
+      {services.map((service) => <ServiceCard service={service} compact />)}
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,33 @@
+---
+import type { Project } from "../../data/projects";
+import { getProjectIconKind } from "../../utils/helpers";
+import FeatureIcon from "./FeatureIcon.astro";
+
+type Props = {
+  project: Project;
+};
+
+const { project } = Astro.props;
+const icon = getProjectIconKind(project.category);
+---
+
+<article class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
+  <div class="border-b border-slate-800 bg-slate-950 px-7 py-6 text-white">
+    <div class="flex items-start justify-between gap-4">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">{project.category}</p>
+        <h3 class="text-wrap-balance mt-3 text-2xl font-semibold tracking-tight">{project.title}</h3>
+        <p class="mt-3 text-sm leading-6 text-slate-300">{project.location}</p>
+      </div>
+      <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white">
+        <FeatureIcon kind={icon} />
+      </span>
+    </div>
+  </div>
+  <div class="space-y-6 px-7 py-7">
+    <div class="inline-flex rounded-full bg-slate-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-slate-600">
+      {project.year}
+    </div>
+    <p class="text-sm leading-7 text-slate-600">{project.description}</p>
+  </div>
+</article>

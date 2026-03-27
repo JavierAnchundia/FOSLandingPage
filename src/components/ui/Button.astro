@@ -1,0 +1,34 @@
+---
+type Props = {
+  href?: string;
+  variant?: "primary" | "secondary" | "dark";
+  className?: string;
+  type?: "button" | "submit" | "reset";
+};
+
+const {
+  href,
+  variant = "primary",
+  className = "",
+  type = "button",
+} = Astro.props;
+
+const variantClass =
+  variant === "secondary"
+    ? "button-secondary"
+    : variant === "dark"
+      ? "inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+      : "button-primary";
+---
+
+{
+  href ? (
+    <a href={href} class:list={[variantClass, className]}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class:list={[variantClass, className]}>
+      <slot />
+    </button>
+  )
+}

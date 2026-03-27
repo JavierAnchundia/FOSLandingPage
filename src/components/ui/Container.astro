@@ -1,0 +1,13 @@
+---
+type Props = {
+  className?: string;
+  as?: keyof HTMLElementTagNameMap;
+};
+
+const { className = "", as = "div" } = Astro.props;
+const Tag = as;
+---
+
+<Tag class:list={["container-shell", className]}>
+  <slot />
+</Tag>

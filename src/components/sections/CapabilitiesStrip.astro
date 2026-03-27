@@ -1,0 +1,27 @@
+---
+import type { HomeContent } from "../../data/site";
+import Container from "../ui/Container.astro";
+
+type Props = {
+  items: HomeContent["capabilities"];
+};
+
+const { items } = Astro.props;
+---
+
+<section class="-mt-8 relative z-20">
+  <Container>
+    <div class="rounded-[2rem] border border-slate-800 bg-slate-950 px-6 py-6 shadow-[0_22px_55px_rgba(4,12,20,0.24)] md:px-8">
+      <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        {
+          items.map((item) => (
+            <div class="rounded-[1.5rem] border border-white/10 bg-white/[0.03] px-5 py-5">
+              <p class="text-3xl font-semibold tracking-tight text-white">{item.value}</p>
+              <p class="mt-2 text-sm leading-6 text-slate-400">{item.label}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</section>

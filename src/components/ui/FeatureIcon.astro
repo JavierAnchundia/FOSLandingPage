@@ -1,0 +1,140 @@
+---
+import type { FeatureIconKind } from "../../utils/helpers";
+
+type Props = {
+  kind: FeatureIconKind;
+  className?: string;
+};
+
+const { kind, className = "h-5 w-5" } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.7"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+  aria-hidden="true"
+>
+  {
+    kind === "access" && (
+      <>
+        <path d="M4 18h16" />
+        <path d="M7 18v-5" />
+        <path d="M12 18V8" />
+        <path d="M17 18v-9" />
+        <path d="M9 6h6" />
+      </>
+    )
+  }
+  {
+    kind === "local" && (
+      <>
+        <rect x="4" y="5" width="16" height="6" rx="1.5" />
+        <path d="M8 11v5" />
+        <path d="M16 11v5" />
+        <path d="M5 18h14" />
+      </>
+    )
+  }
+  {
+    kind === "fiber" && (
+      <>
+        <path d="M5 14c1.4-3.7 4-5.5 7-5.5S17.6 10.3 19 14" />
+        <path d="M8 14c.7-1.8 2-2.7 4-2.7S15.3 12.2 16 14" />
+        <path d="M12 14v5" />
+        <path d="M9.5 19h5" />
+      </>
+    )
+  }
+  {
+    kind === "telecom" && (
+      <>
+        <path d="M12 3l6 3.5v11L12 21 6 17.5v-11L12 3Z" />
+        <path d="M12 8v8" />
+        <path d="m8 9 4 2 4-2" />
+      </>
+    )
+  }
+  {
+    kind === "network" && (
+      <>
+        <rect x="4" y="5" width="5" height="5" rx="1" />
+        <rect x="15" y="5" width="5" height="5" rx="1" />
+        <rect x="9.5" y="14" width="5" height="5" rx="1" />
+        <path d="M9 7.5h6" />
+        <path d="M12 10v4" />
+      </>
+    )
+  }
+  {
+    kind === "support" && (
+      <>
+        <path d="M12 18a6 6 0 1 1 6-6" />
+        <path d="M12 18v3" />
+        <path d="M18 13.5h2.5" />
+        <path d="M3.5 13.5H6" />
+        <path d="M7.8 7.8 6 6" />
+        <path d="m16.2 7.8 1.8-1.8" />
+      </>
+    )
+  }
+  {
+    kind === "maintenance" && (
+      <>
+        <path d="m14.5 6.5 3 3" />
+        <path d="m13.2 7.8 2.4-2.4a1.8 1.8 0 0 1 2.5 2.5l-2.4 2.4" />
+        <path d="M11.8 9.2 5 16v3h3l6.8-6.8" />
+        <path d="M6.5 17.5h2" />
+      </>
+    )
+  }
+  {
+    kind === "projects" && (
+      <>
+        <path d="M5 6h14" />
+        <path d="M5 12h9" />
+        <path d="M5 18h14" />
+        <circle cx="17.5" cy="12" r="1.5" />
+      </>
+    )
+  }
+  {
+    kind === "connectivity" && (
+      <>
+        <path d="M4 14a8 8 0 0 1 16 0" />
+        <path d="M7 14a5 5 0 0 1 10 0" />
+        <path d="M10 14a2 2 0 0 1 4 0" />
+        <path d="M12 16v2" />
+      </>
+    )
+  }
+  {
+    kind === "infrastructure" && (
+      <>
+        <path d="M5 20V8l7-4 7 4v12" />
+        <path d="M9 20v-4h6v4" />
+        <path d="M8 10h.01" />
+        <path d="M12 10h.01" />
+        <path d="M16 10h.01" />
+      </>
+    )
+  }
+  {
+    kind === "corporate" && (
+      <>
+        <path d="M4 20h16" />
+        <path d="M6 20V6h12v14" />
+        <path d="M9 9h2" />
+        <path d="M13 9h2" />
+        <path d="M9 12h2" />
+        <path d="M13 12h2" />
+        <path d="M11 20v-4h2v4" />
+      </>
+    )
+  }
+</svg>
