@@ -6,13 +6,15 @@ import BrandLogo from "../ui/BrandLogo.astro";
 import Navigation from "./Navigation.astro";
 ---
 
-<header class="sticky top-0 z-50 border-b border-slate-200/70 bg-slate-50/88 backdrop-blur-xl">
+<header class="sticky top-0 z-50 border-b border-slate-200/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.9)_0%,rgba(255,255,255,0.74)_56%,rgba(255,255,255,0.2)_100%)] shadow-[0_16px_38px_rgba(15,23,42,0.1)] backdrop-blur-xl">
   <Container className="flex items-center justify-between gap-4 py-3.5">
     <a href="/#inicio" class="group inline-flex items-center">
       <BrandLogo />
     </a>
 
-    <Navigation items={navigation} />
+    <div class="hidden lg:block">
+      <Navigation items={navigation} />
+    </div>
 
     <div class="flex items-center gap-3">
       <Button href="/#contacto" variant="dark" className="hidden md:inline-flex">Contacto</Button>
@@ -22,7 +24,7 @@ import Navigation from "./Navigation.astro";
     </div>
   </Container>
 
-  <div id="mobile-menu" class="border-t border-slate-200 bg-slate-50 lg:hidden">
+  <div id="mobile-menu" class="border-t border-slate-200 bg-white shadow-[0_18px_30px_rgba(15,23,42,0.1)] lg:hidden">
     <Container className="py-4">
       <Navigation items={navigation} mobile />
     </Container>
@@ -68,7 +70,7 @@ import Navigation from "./Navigation.astro";
         }
       },
       {
-        rootMargin: "-35% 0px -45% 0px",
+        rootMargin: "-28% 0px -52% 0px",
         threshold: [0.2, 0.35, 0.5, 0.65],
       },
     );
